@@ -71,7 +71,7 @@ func (l *LoginShare) Request(w http.ResponseWriter, r *http.Request) {
 	xw := xml.NewEncoder(w)
 	resp, err := l.OnNewAuth(lsr)
 	if err != nil {
-		log.Printf("loginshare request from %s failed: %s", err)
+		log.Printf("loginshare request from %s failed: %s", r.RemoteAddr, err)
 		resp.StaffRecord = Staff{} // make sure we don't give up any info if partially populated
 		resp.Result = 0
 		resp.Message = err.Error()
