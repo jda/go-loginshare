@@ -67,14 +67,14 @@ func (l *LoginShare) Request(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Header.Add("Content-Type", "application/xml")
+	w.Header().Add("Content-Type", "application/xml")
 	xw := xml.NewEncoder(w)
 	resp, err := l.OnNewAuth(lsr)
 	if err != nil {
 		log.Printf("loginshare request from %s failed: %s", err)
-		resp.StaffRecord = nil // make sure we don't give up any info if partially populated
+		resp.StaffRecord = Staff{} // make sure we don't give up any info if partially populated
 		resp.Result = 0
-		resp.Message = err
+		resp.Message = err.Error()
 		xw.Encode(resp)
 		return
 	}
