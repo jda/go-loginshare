@@ -10,7 +10,6 @@ import (
 )
 
 type LoginShare struct {
-	Team              string
 	AllowedInterfaces []string
 	OnNewAuth         func(r RequestParams) (Response, error)
 }
