@@ -83,10 +83,6 @@ func (l *LoginShare) Request(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
-func lsErrorWriter(w http.ResponseWriter, e error) {
-
-}
-
 func (l *LoginShare) validateRequest(r *http.Request) (RequestParams, error) {
 	var lsr RequestParams
 	inError := false
